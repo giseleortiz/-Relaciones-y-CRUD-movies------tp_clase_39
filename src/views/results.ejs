@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <!-- Include Head -->
-<%- include('partials/head', {title: 'Resultados de tu búsqueda:'}) %>
+<%- include('partials/head', {title: 'Resultados de tu búsqueda'}) %>
 <body>
 	<!-- Header -->
 	<%- include('partials/headerNavbar') %>
@@ -15,15 +15,17 @@
 	<div class="container products-wrapper">
 		<div class="row">
 			<div class="col-12">
-				<h2 class="products-title">Resultados de la búsqueda:<%= keywords %></h2>
+				<h2 class="products-title">Resultados de la búsqueda: <%= keywords %></h2>
 			</div>
 			<% if (products.length) { %>
+			 
 				<% products.forEach(product => { %>
-					<%- include('./partials/tarjetasProductos', {product , toThousand}) %>
+				 <%- include('./partials/cardProduct', {
+					product
+				 }) %>
 				<% }) %>
-			<% } else { %>
-			
-
+				
+			<% }else{ %>
 			<div class="col-12">
 				<h2 class="products-title" style="color: tomato;">No hay productos que coincidan con esa búsqueda</h2>
 			</div>

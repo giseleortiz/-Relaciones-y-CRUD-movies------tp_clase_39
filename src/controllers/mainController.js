@@ -8,20 +8,21 @@ const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
 const controller = {
 	index: (req, res) => {
-		return res.render('index', {
-			productsVisited: products.filter(product => product.category === "visited"),
-			productsInSale : products.filter(product => product.category === "in-sale"),
-			products , 
+		// Do the magic
+		return res.render('index',{
+			productsVisited : products.filter(product => product.category === 'visited'),
+			products,
 			toThousand
-		})
+		});
 	},
 	search: (req, res) => {
-	const {keywords}=req.query ;
-	return res.render('results',{
-		products : products.filter( product => product.name.toLowerCase().includes(keywords.toLowerCase())),
-		keywords,
-		toThousand
-	} )
+		// Do the magic
+		const {keywords} = req.query;
+		return res.render('results',{
+			products : products.filter(product => product.name.toLowerCase().includes(keywords.toLowerCase())),
+			keywords,
+			toThousand
+		})
 	},
 };
 

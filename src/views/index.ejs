@@ -1,51 +1,50 @@
 <!DOCTYPE html>
 <html lang="es">
 <!-- Include Head -->
-<%- include('partials/head', {title: 'Inicio'}) %>
-<body>
-	<!-- Header -->
-	<%- include('partials/headerNavbar') %>
-	<!-- /Header -->
-	
-	<!-- Banner -->
-	<div class="banner"></div>
-	<!-- /Banner -->
+<%- include('partials/head', {title: 'Inicio' }) %>
 
-	<!-- ultima visita -->
-	<div class="container products-wrapper">
-		<div class="row">
-			<div class="col-12">
-				<h2 class="products-title">Basado en tu última visita</h2>
+	<body>
+		<!-- Header -->
+		<%- include('partials/headerNavbar') %>
+			<!-- /Header -->
+
+			<!-- Banner -->
+			<div class="banner"></div>
+			<!-- /Banner -->
+
+			<!-- ultima visita -->
+			<div class="container products-wrapper">
+				<div class="row">
+					<div class="col-12">
+						<h2 class="products-title">Basado en tu última visita</h2>
+					</div>
+					<!-- Show the "visited" products -->
+					<% productsVisited.forEach(product=> { %>
+						<%- include('./partials/cardProduct', {
+							product
+						}) %>
+					<% }) %>
+				</div>
 			</div>
-			<!-- Show the "visited" products -->
-<% productsVisited.forEach(product => { %>
-	<%- include('./partials/tarjetasProductos', {product}) %>
-<% }) %>
+			<!-- /ultima visita -->
 
-			
-		</div>
-	</div>
-	<!-- /ultima visita -->
-
-	<!-- Ofertas -->
-	<div class="container products-wrapper">
-		<div class="row">
-			<div class="col-12">
-				<h2 class="products-title">Ofertas</h2>
+			<!-- Ofertas -->
+			<div class="container products-wrapper">
+				<div class="row">
+					<div class="col-12">
+						<h2 class="products-title">Ofertas</h2>
+					</div>
+					<!-- Show the "in-sale" products -->
+					<% products.filter(product => product.category === 'in-sale').forEach(product => { %>
+						<%- include('./partials/cardProduct', {product}) %>
+					<% }) %>
+				</div>
 			</div>
-			<!-- Show the "in-sale" products -->
-			<% productsInSale.forEach( product => { %>
-               
-			<%- include('./partials/tarjetasProductos', {product}) %>
+			<!-- /Ofertas -->
 
-			<% }) %>
-			
-		</div>
-	</div>
-	<!-- /Ofertas -->
+			<!-- footer -->
+			<%- include('partials/footer') %>
+				<!-- /footer -->
+	</body>
 
-	<!-- footer -->
-	<%- include('partials/footer') %>
-	<!-- /footer -->
-</body>	
 </html>
